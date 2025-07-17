@@ -1,0 +1,1 @@
+# INSTRUKCJA_17.07.2025.md
