@@ -149,3 +149,58 @@ Specyfikacja OpenAPI jest generowana automatycznie przez FastAPI i dostępna pod
 5.  **Zarządzanie dokumentami**: Dodanie funkcjonalności przesyłania, przechowywania i zarządzania dokumentami powiązanymi ze sprawami.
 6.  **Generowanie SDK**: Rozwój skryptów do automatycznego generowania bibliotek klienckich (SDK) dla Pythona i JavaScript na podstawie pliku `openapi.yaml`.
 7.  **Rozwój generatora snippetów**: Stworzenie aplikacji (np. w React), która ułatwi programistom korzystanie z API poprzez generowanie gotowych fragmentów kodu.
+
+
+
+=================================
+
+
+---
+
+### Instalacja i Uruchomienie Frontend'u
+
+Aplikacja frontendowa, służąca jako interfejs użytkownika dla API (np. do generowania snippetów kodu lub zarządzania danymi), znajduje się w katalogu `frontend/`. Do zarządzania jej zależnościami projekt wykorzystuje `pnpm`.
+
+#### Czym jest pnpm?
+`pnpm` (performant npm) to nowoczesny menedżer pakietów dla Node.js. Jego głównymi zaletami w stosunku do standardowego `npm` czy `Yarn` są:
+*   **Wydajność i szybkość:** `pnpm` jest znacznie szybszy, ponieważ instaluje pakiety równolegle i unika powtarzania tych samych operacji.
+*   **Oszczędność miejsca na dysku:** Zamiast kopiować wszystkie pakiety do folderu `node_modules` każdego projektu, `pnpm` tworzy globalne repozytorium na dysku i używa dowiązań (linków) do współdzielenia zależności między projektami. Dzięki temu ten sam pakiet, nawet w tej samej wersji, jest fizycznie przechowywany na dysku tylko raz.
+*   **Niezawodność i bezpieczeństwo:** Struktura, którą tworzy `pnpm`, jest bardziej przewidywalna i zapobiega sytuacji, w której kod ma dostęp do pakietów, które nie zostały jawnie zadeklarowane w `package.json`.
+
+#### 1. Instalacja pnpm
+Jeśli nie masz jeszcze zainstalowanego `pnpm`, najłatwiej jest go zainstalować globalnie przy pomocy `npm` (który jest domyślnie dołączony do Node.js).
+
+```bash
+npm install -g pnpm
+```
+Aby zweryfikować instalację, uruchom:
+```bash
+pnpm --version
+```
+
+#### 2. Instalacja Zależności Frontendowych
+Po zainstalowaniu `pnpm`, możesz zainstalować wszystkie zależności potrzebne dla aplikacji frontendowej.
+
+```bash
+# Przejdź do katalogu frontend
+cd frontend
+
+# Zainstaluj zależności za pomocą pnpm
+pnpm install
+```
+Polecenie to przeczyta plik `package.json` w katalogu `frontend` i pobierze wszystkie wymagane biblioteki do folderu `node_modules`.
+
+#### 3. Uruchomienie Aplikacji Frontendowej
+Aby uruchomić serwer deweloperski aplikacji frontendowej (np. stworzonej w React, Vue lub Angular), najczęściej używa się jednego z poniższych poleceń:
+
+```bash
+# Uruchom serwer deweloperski
+pnpm dev
+```
+lub
+```bash
+pnpm start
+```
+*Dokładne polecenie zależy od tego, jak zostało ono zdefiniowane w sekcji `"scripts"` w pliku `package.json`.*
+
+Po uruchomieniu aplikacja frontendowa będzie zazwyczaj dostępna w przeglądarce pod adresem `http://localhost:3000` lub podobnym (dokładny adres URL pojawi się w konsoli po wykonaniu polecenia).
